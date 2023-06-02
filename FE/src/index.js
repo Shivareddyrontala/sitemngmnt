@@ -1,33 +1,62 @@
-import React from 'react';
+import React,{useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
+import Employee from './pages/Employee/Employee';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import reportWebVitals from './reportWebVitals';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import Topbar from './components/Topbar';
+import Sidebar from './components/sidebar/Sidebar';
+import GlobalContext from './context/GlobalContext';
+import Punch from './pages/Employee/Punch';
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/login",
     element: <Login />,
   },
   {
-    path: "/home",
-    element: <Home />,
+    path : '/Employee-Info',
+    element: <Employee />,
   },
+  {
+    path : '/punch',
+    element: <Punch />,
+  }
 ]);
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <RouterProvider router={router} />
+    <GlobalContext>
+      <ThemeProvider theme={darkTheme}>
+              <Topbar />
+              <div className='root_container_flex'>
+                  <div className='root_container_left'>
+                    <Sidebar />
+                  </div>
+                  <div className='root_container_right'>
+                    <RouterProvider router={router} />
+                  </div>
+              </div>
+              <CssBaseline />
+      </ThemeProvider>
+    </GlobalContext>
+      
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
