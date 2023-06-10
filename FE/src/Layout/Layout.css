@@ -1,0 +1,19 @@
+.lo_bsc_root_flex{
+    display: flex;
+}
+.lo_bsc_sidebar{
+    height: 100%;
+    width: 20%;
+}
+.lo_bsc_maincontent{
+    width: 80%;
+    height: 100vh;
+}
+@media (max-width: 800px) {
+    .lo_bsc_root_flex {
+      flex-direction: column;
+    }
+    .lo_bsc_sidebar{
+        height: 100%;
+    }
+  }

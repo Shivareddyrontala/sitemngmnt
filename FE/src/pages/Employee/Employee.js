@@ -16,6 +16,7 @@ import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import Layoutbasic from '../../Layout/Layoutbasic';
 
 function Employee() {
   const [name,setName] = useState('');
@@ -45,7 +46,7 @@ function Employee() {
   }
 
   return (
-     <div>
+     <Layoutbasic>
           <Grid container spacing={3} style={{padding: '3rem'}}>
             <Grid item  md={4}></Grid>
             <Grid item  md={4}>
@@ -113,7 +114,7 @@ function Employee() {
             </Grid>
             <Grid item  md={2}></Grid>
           </Grid>
-     </div>
+     </Layoutbasic>
   )
 }
 

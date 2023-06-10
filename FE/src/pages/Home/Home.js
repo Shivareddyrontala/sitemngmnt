@@ -13,6 +13,7 @@ import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { useNavigate } from "react-router-dom";
 import Punch from '../Employee/Punch';
 import {SiteContext} from '../../context/GlobalContext';
+import Layoutbasic from '../../Layout/Layoutbasic';
 
 function Home(props) {
   const allContextData = useContext(SiteContext);
@@ -26,12 +27,15 @@ function Home(props) {
       case 'employeeBoard':
         navigate('/Employee-Info');
         break;
-
+      case 'otherboard':
+        navigate('/Other-info');
+        break;
       default:
         break;
     }
   }
   return (
+    <Layoutbasic>
     <div>
         {
           allContextData.userLogged ? 
@@ -67,20 +71,20 @@ function Home(props) {
                   <Card>
                     <CardContent>
                     <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
-                       Other Information
+                      Manage Other Information
                     </Typography>
                     <AddCircleIcon style={{ fontSize: '3rem' }} />
                     </CardContent>
                     <CardActions>
-                    <Button variant="contained" size="small" endIcon={<ArrowRightAltIcon />}>Goto Dashboard</Button>
+                     <Button  onClick={() => goto('otherboard')} variant="contained" size="small" endIcon={<ArrowRightAltIcon />}>Goto Dashboard</Button>
                     </CardActions>
                   </Card>
               </Grid>
             </Grid>
           </> : <Punch />
-          // <Login handleLogin={handleLogin} />
         }
     </div>
+    </Layoutbasic>
   )
 }
 

@@ -1,0 +1,12 @@
+.other-drag-zone-container{
+    height: 300px;
+    width: 100%;
+    border: 5px dotted #fff;
+    margin-top: 1rem;
+    box-shadow: 3px 5px 8px 6px #202020;
+}
+.file_card_root{
+    box-shadow: 3px 5px 8px 6px #202020;
+    border: 1px dotted #fff;
+    margin-top: 0.5rem;
+}

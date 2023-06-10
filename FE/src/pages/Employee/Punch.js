@@ -12,6 +12,7 @@ import './Punch.css';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
+import personicon from '../../assets/images/personicon.png';
 
 function Punch() {
     const [open, setOpen] = React.useState(false);
@@ -41,19 +42,20 @@ function Punch() {
     <div>
         <Box sx={{ flexGrow: 1 }} className='glc_punch_rootbox'>
             <Grid container spacing={2}>
-                <Grid item xs={12}>
-                <Typography sx={{ fontSize: 25 }} color="text.secondary" gutterBottom>
-                    <i>Welcome To Primary Portal <br/> Please Log Your Entry</i>
-                </Typography>
+                <Grid item xs={12} style={{textAlign:'center'}}>
+                    <Typography sx={{ fontSize: 25 }} color="text.secondary" gutterBottom>
+                        <i>Welcome To Primary Portal <br/> Please Log Your Entry</i>
+                    </Typography>
                 </Grid>
             </Grid>
             <Grid container spacing={2}>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                     <Card className='glc_punch_login_logout_card'>
                         <CardContent>
-                            <Typography sx={{ fontSize: 25 }} color="text.secondary" gutterBottom>
-                                Log <br/> Time-In
+                            <Typography sx={{ fontSize: 25 }} md={{ fontSize : 25 }} color="text.secondary" gutterBottom>
+                                Log Time In
                             </Typography>
+                            <img src={personicon}></img>
                         </CardContent>
                         <CardActions style={{justifyContent:'center'}}>
                             <div style={{textAlign: 'center'}}>
@@ -62,13 +64,13 @@ function Punch() {
                         </CardActions>
                     </Card>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                         <Card className='glc_punch_login_logout_card' >
                             <CardContent>
-                                <Typography sx={{ fontSize: 25 }} color="text.secondary" gutterBottom>
-                                    Log 
-                                    <br/>Time-Out
+                                <Typography sx={{ fontSize: 25 }} md={{ fontSize : 25 }} color="text.secondary" gutterBottom>
+                                    Log Time Out
                                 </Typography>
+                                <img src={personicon}></img>
                             </CardContent>
                             <CardActions style={{justifyContent:'center'}}>
                                 <div style={{textAlign: 'center'}}>
@@ -84,7 +86,7 @@ function Punch() {
                     aria-labelledby="child-modal-title"
                     aria-describedby="child-modal-description"
                 >
-                    <Box sx={{ ...style, width: 500 }}>
+                    <Box sx={{ ...style }}>
                         <Typography variant={'p'} color="text.secondary" gutterBottom>
                                 Please Provide Your User Name/ID
                         </Typography><br/><br/>

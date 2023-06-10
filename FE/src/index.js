@@ -10,10 +10,10 @@ import {
 } from "react-router-dom";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import Topbar from './components/Topbar';
 import Sidebar from './components/sidebar/Sidebar';
 import GlobalContext from './context/GlobalContext';
 import Punch from './pages/Employee/Punch';
+import Otherinfo from './pages/OtherInfo/Otherinfo';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +31,10 @@ const router = createBrowserRouter([
   {
     path : '/punch',
     element: <Punch />,
+  },
+  {
+    path : '/Other-info',
+    element: <Otherinfo />,
   }
 ]);
 
@@ -45,16 +49,8 @@ root.render(
   <React.StrictMode>
     <GlobalContext>
       <ThemeProvider theme={darkTheme}>
-              <Topbar />
-              <div className='root_container_flex'>
-                  <div className='root_container_left'>
-                    <Sidebar />
-                  </div>
-                  <div className='root_container_right'>
-                    <RouterProvider router={router} />
-                  </div>
-              </div>
-              <CssBaseline />
+          <RouterProvider router={router} />
+          <CssBaseline />
       </ThemeProvider>
     </GlobalContext>
       
