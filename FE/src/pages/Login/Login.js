@@ -14,7 +14,7 @@ function Login(props) {
   const allContextData = useContext(SiteContext);
   const navigate = useNavigate();
   const handleLogin = async() => {
-    const result = await  axiosBase.get('http://localhost:8000/hello');
+    const result = await  axiosBase.get('hello');
     console.log(result,"result ===>");
 
     return;
