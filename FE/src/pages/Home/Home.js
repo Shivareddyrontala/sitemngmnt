@@ -22,7 +22,6 @@ function Home(props) {
 
   const navigate = useNavigate();
   const goto = (val) => {
-    console.log("hello");
     switch (val) {
       case 'employeeBoard':
         navigate('/Employee-Info');

@@ -14,7 +14,8 @@ import './Topbar.css'
 function Topbar() {
   const navigate = useNavigate();
   const contextInfo = useContext(SiteContext);
-  console.log(contextInfo,"logUser");
+  const userName = localStorage.getItem('name');
+
   const handleUser = (val) => {
     if(val == 'log'){
       navigate("/login");
@@ -22,7 +23,6 @@ function Topbar() {
     else{
       navigate("/register");
     }
-   
   };
   return (
     <div>
@@ -47,24 +47,14 @@ function Topbar() {
                             Login
                           </Button> :
                           <Typography variant="p" component="div" sx={{ flexGrow: 1, textAlign:'end' }}>
-                            Welcome User !
+                            Welcome {userName} !
                           </Typography>
                   }
-                  <Button size="small" color="inherit" variant="outlined" onClick={() => handleUser('reg')} sx={{ marginLeft: '8px' }}>
+                  {/* <Button size="small" color="inherit" variant="outlined" onClick={() => handleUser('reg')} sx={{ marginLeft: '8px' }}>
                     Register
-                  </Button>
+                  </Button> */}
                 </Grid>
             </Grid>
-
-            {/* <Box sx={{ flexGrow: 1}}>
-              
-            </Box>
-            <Box sx={{ flexGrow: 1}}>
-              
-            </Box>
-            <Box sx={{ flexGrow: 1}}>
-              
-            </Box> */}
           </Toolbar>
         </AppBar>
       </Box>

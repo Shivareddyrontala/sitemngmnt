@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -17,6 +17,7 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Layoutbasic from '../../Layout/Layoutbasic';
+import {HTTP_POST,HTTP_GET} from '../../httpCommon';
 
 function Employee() {
   const [name,setName] = useState('');
@@ -24,13 +25,25 @@ function Employee() {
   const [age,setAge] = useState('');
   const [allData,setAllData]  = useState([]);
 
-  const submitForm = () => {
-    let existingData = [... allData];
-    existingData.push({name : name,age: age,number :number});
-    setAllData(existingData);
+  useEffect(() =>{
+      getAllRecords();
+  },[]);
+
+  const getAllRecords = () => {
+    const result = HTTP_GET('employees');
+    result.then((data) =>{
+      if(data.data?.status == 'ok'){
+        setAllData(data?.data?.employeeData);
+      }
+    })
+  }
+  const submitForm = async () => {
+    var empData = {name: name, number : number , age: age}
+    const result  = await HTTP_POST('employee/register',empData);
     setName('');
     setNumber('');
     setAge('');
+    getAllRecords();
   }
 
   const deleteRecord = (val) =>{
@@ -56,7 +69,7 @@ function Employee() {
                     <TextField  fullWidth id="outlined-basic" value={name} label="Employee Name" variant="outlined" onChange={e => setName(e.target.value)}  />
                   </div>
                   <div className="input_margin_btm">
-                    <TextField   fullWidth id="outlined-basic" value={number} label="Employee Number" variant="outlined" onChange={e => setNumber(e.target.value)}  />
+                    <TextField   fullWidth id="outlined-basic" value={number} label="Mobile Number" variant="outlined" onChange={e => setNumber(e.target.value)}  />
                   </div>
                   <div className="input_margin_btm">
                     <TextField  fullWidth id="outlined-basic" value={age} label="Age" variant="outlined" onChange={e => setAge(e.target.value)} />
