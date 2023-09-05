@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const User = require('./Models/user.model');
 const Employee = require('./Models/employee.model');
 const EmployeeAttendance = require('./Models/attendance.model');
+const moment = require('moment-timezone');
 
 app.use(cors());
 app.use(express.json());
@@ -81,27 +82,37 @@ app.get('/api/employees',async(req,res) => {
 
 // Attendance Routes
 app.post('/api/employee/attendance',async(req,res) => {
-  
+    console.log("data--",req)
+ 
     const existing_data = await EmployeeAttendance.findOne({
         username : req.body.username,
         date : req.body.date
     });
-    console.log(existing_data,"existing_data ==>");
-    res.json({mg : existing_data});
-    return;
+
     if(!existing_data){
         try{
             const attendance = await EmployeeAttendance.create({
                 username : req.body.username,
                 timein : req.body.timein,
                 timeout : req.body.timeout,
-                date : req.body.date
+                date : req.body.date,
+                totalhrs : 0
             });
-            res.json({ status: 'ok',msg:'Successfully added employee',info: req.body}) 
+            res.json({ status: 'ok',msg:'Successfully added employee punch',info: req.body}) 
         }
         catch(error){
             console.log(error)
             res.json({status : 'error', msg : error})
+        }
+    }
+    else{
+        if(req.body.timeout != 0 && req.body.timeout){
+            var startTime = moment(existing_data.timein, 'DD-MM-YYYY hh:mm:ss');
+            var endTime = moment(req.body.timeout, 'DD-MM-YYYY hh:mm:ss');
+            var hoursDiff = endTime.diff(startTime, 'hours');
+            res.json({
+                        diff: hoursDiff
+                    });
         }
     }
     

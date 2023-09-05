@@ -11,9 +11,11 @@ import {
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Sidebar from './components/sidebar/Sidebar';
+// for global state management
 import GlobalContext from './context/GlobalContext';
 import Punch from './pages/Employee/Punch';
 import Otherinfo from './pages/OtherInfo/Otherinfo';
+import TimeSheet from './pages/Timesheet/Timesheet'
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,10 @@ const router = createBrowserRouter([
   {
     path : '/Other-info',
     element: <Otherinfo />,
+  },
+  {
+    path : '/timesheet-info',
+    element : <TimeSheet />
   }
 ]);
 

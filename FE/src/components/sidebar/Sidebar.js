@@ -70,7 +70,7 @@ function Sidebar() {
                     <TextSnippetIcon />
                 </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary="Time Sheet (Beta)" secondary="Coming Soon ..." />
+                <ListItemText primary="Time Sheet" secondary="View Timesheet Information"  onClick={() => handleListClk('/timesheet-info')} />
             </ListItem>
         </List>
     </>

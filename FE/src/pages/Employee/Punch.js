@@ -36,9 +36,17 @@ function Punch() {
     setOpen(false);
     setTimeout(() => setShowSuccesALert(false),2000);
 
-    var todayDate = moment().format('YYYY MMM DD h:mm A');
-    var onlyDate = moment().startOf('day')
-    console.log(todayDate, "in ooo",onlyDate);
+    var dateTimeNow = moment().format('YYYY MMM DD h:mm A');
+
+    var empData = {
+        username : name,
+        timein : actnText == 'In' ? dateTimeNow : 0,
+        timeout : actnText == 'Out' ? dateTimeNow : 0,
+        date : dateTimeNow,
+        totalhrs : null
+    }
+    const result  = await HTTP_POST('employee/attendance',empData);
+    console.log("result in punchjs--",result)
   };
 
   const style = {

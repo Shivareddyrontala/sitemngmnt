@@ -18,10 +18,11 @@ export const HTTP_GET = async(path,data) => {
 }
 
 export const HTTP_POST = async(path,data) => {
+    console.log("result in commonjs--",data,path)
     const result = await axios.post(baseURL+path,{
         headers: headers,
         data
     });
     console.log(result,"result");
-    return result;
+    // return result;
 }

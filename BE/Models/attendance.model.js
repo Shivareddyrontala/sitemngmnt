@@ -6,7 +6,7 @@ const EmployeeAttendance = new mongoose.Schema(
         timein : {type : String},
         timeout : {type : String},
         date : {type : Date},
-        totalhrs : {type : String} 
+        totalhrs : {type : Number} 
     },
     {collection: 'employee-attendance'}
 );

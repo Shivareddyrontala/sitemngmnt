@@ -1,0 +1,25 @@
+#timeshee__table table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 500px;
+    overflow: scroll;
+  }
+  
+  #timeshee__table td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 13px;
+    white-space: nowrap;
+  }
+
+  #timeshee__table th{
+    background-color: #323232;
+  }
+  
+  #timeshee__table tr:nth-child(odd) {
+    /* background-color: #323232; */
+  }
+  
+#timeshee__table{
+    overflow: scroll;
+}
